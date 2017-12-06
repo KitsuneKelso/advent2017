@@ -6,12 +6,6 @@
   "repository": "https://github.com/KitsuneKelso/advent2017.git",
   "author": "Fredrik Gustafsson <Fredrik.Gustafsson@nordnet.se>",
   "license": "MIT",
-  "dependencies": {
-    "prop-types": "^15.6.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-scripts": "1.0.17"
-  },
   "scripts": {
     "dev": "npm run styleguide",
     "start": "react-scripts start",
@@ -20,7 +14,18 @@
     "eject": "react-scripts eject",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
-    "lint": "eslint src/components"
+    "lint": "eslint src/components",
+    "format": "prettier --write 'src/components/**/*.js'",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": ["npm run format", "eslint", "git add"]
+  },
+  "dependencies": {
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.0.17"
   },
   "devDependencies": {
     "eslint": "^4.5.0",
@@ -30,6 +35,8 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
     "eslint-plugin-require-path-exists": "^1.1.5",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.2.3",
     "prettier": "1.7.0",
     "react-styleguidist": "^6.0.33",
     "webpack": "^3.10.0"
