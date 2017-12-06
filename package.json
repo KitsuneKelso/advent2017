@@ -1,13 +1,18 @@
 {
   "name": "advent2017",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "solutions for adventofcode 2017",
+  "main": "index.js",
+  "repository": "https://github.com/KitsuneKelso/advent2017.git",
+  "author": "Fredrik Gustafsson <Fredrik.Gustafsson@nordnet.se>",
+  "license": "MIT",
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.0.17"
   },
   "scripts": {
+    "dev": "npm run styleguide",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
