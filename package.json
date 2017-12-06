@@ -7,6 +7,7 @@
   "author": "Fredrik Gustafsson <Fredrik.Gustafsson@nordnet.se>",
   "license": "MIT",
   "dependencies": {
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.0.17"
@@ -18,9 +19,18 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "styleguide:build": "styleguidist build",
+    "lint": "eslint src/components"
   },
   "devDependencies": {
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-require-path-exists": "^1.1.5",
+    "prettier": "1.7.0",
     "react-styleguidist": "^6.0.33",
     "webpack": "^3.10.0"
   }
