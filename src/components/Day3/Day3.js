@@ -13,62 +13,62 @@ class Day3 extends React.Component {
     return matrix;
   };
 
-  spiralArray = (max = 538 ** 2) => {
+  spiralArray = max => {
     const endpoint = Math.ceil(Math.sqrt(max));
     const mid = Math.floor(endpoint / 2);
     const matrix = this.generateMatrix(endpoint);
 
     matrix[mid][mid] = 1;
-    let x = mid;
-    let y = mid;
-    let depth = mid + 1;
-    let shallow = mid - 1;
+    let height = mid;
+    let width = mid;
+    let step = 1;
     let distance = 0;
 
-    const manhattanDistance = (digit, height, width) => {
-      matrix[height][width] = digit;
-      if (digit === max) {
-        distance = Math.abs(height - mid) + Math.abs(width - mid);
+    const getManhattanDistance = (x, y) => Math.abs(x - mid) + Math.abs(y - mid);
+
+    const setCoordinate = (x, y, z) => {
+      matrix[x][y] = z;
+      if (z === max) {
+        distance = getManhattanDistance(x, y);
       }
     };
 
     const breaker = iter => iter >= max;
 
-    for (let j = 1; j < max; ) {
+    for (let i = 1; i < max; ) {
       // RIGHT
-      while (y < depth) {
-        if (breaker(j)) break;
-        j += 1;
-        y += 1;
-        manhattanDistance(j, x, y);
+      while (width < mid + step) {
+        if (breaker(i)) break;
+        i += 1;
+        width += 1;
+        setCoordinate(height, width, i);
       }
 
       // UP
-      while (x > shallow) {
-        if (breaker(j)) break;
-        j += 1;
-        x -= 1;
-        manhattanDistance(j, x, y);
+      while (height > mid - step) {
+        if (breaker(i)) break;
+        i += 1;
+        height -= 1;
+        setCoordinate(height, width, i);
       }
 
       // LEFT
-      while (y > shallow) {
-        if (breaker(j)) break;
-        j += 1;
-        y -= 1;
-        manhattanDistance(j, x, y);
+      while (width > mid - step) {
+        if (breaker(i)) break;
+        i += 1;
+        width -= 1;
+        setCoordinate(height, width, i);
       }
 
       // DOWN
-      while (x < depth) {
-        if (breaker(j)) break;
-        j += 1;
-        x += 1;
-        manhattanDistance(j, x, y);
+      while (height < mid + step) {
+        if (breaker(i)) break;
+        i += 1;
+        height += 1;
+        setCoordinate(height, width, i);
       }
 
-      depth += 1;
-      shallow -= 1;
+      step += 1;
     }
 
     return distance;
@@ -85,7 +85,11 @@ class Day3 extends React.Component {
 }
 
 Day3.propTypes = {
-  input: PropTypes.number.isRequired,
+  input: PropTypes.number,
+};
+
+Day3.defaultProps = {
+  input: 25,
 };
 
 export default Day3;
